@@ -1,0 +1,22 @@
+{% extends './base.html' %} {% block content %}
+<h1>
+    Todo list
+</h1>
+<a href="{% url 'createtodos' %}">Add new ToDo</a>
+<a href="{% url 'completetodos' %}"> Completed Todo</a>
+<a href="{% url 'currenttodos' %}"> Current Todo</a>
+<ul>
+    {% for todo in todos %}
+    <li>
+        <a href="{% url 'viewtodo' todo.id %}">
+            {% if todo.important %}<strong>{% endif %} {{ todo.title }} {% if todo.important %}</strong>{% endif %}
+        </a> 
+        <br>
+        <h4>Completed: {{ todo.datecompleted|date:'M j Y H:i' }}</h4>
+        <br>
+        {% if todo.memo %}-{{ todo.memo }} {% endif %}
+    </li>
+
+    {% endfor %}
+</ul>
+{% endblock %}
