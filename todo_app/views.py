@@ -8,6 +8,7 @@ from .forms import TodoForm
 from .models import Todo
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
+from datetime import datetime
 
 
 def home(request):
@@ -92,7 +93,7 @@ def viewtodo(request, todo_pk):
 def completetodo(request, todo_pk):
     todo = get_object_or_404(Todo, pk=todo_pk, user=request.user)
     if request.method == "POST":
-        todo.datecompleted = timezone.now()
+        todo.datecompleted = datetime.now()
         todo.save()
         return redirect('currenttodos')
 
