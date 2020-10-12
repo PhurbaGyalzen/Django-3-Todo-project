@@ -6,7 +6,6 @@ from django.db import IntegrityError
 from django.contrib.auth import login, logout, authenticate
 from .forms import TodoForm
 from .models import Todo
-from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
 
